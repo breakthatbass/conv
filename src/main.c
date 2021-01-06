@@ -26,39 +26,38 @@ int main(int argc, char **argv)
 	}
 
 	while ((opt = getopt(argc, argv, "d:x:b:h")) != -1) {
-		switch(opt)
-		{
-			case 'd':
-				n = atoi(optarg);
-				// convert dec to bin
-				char *bin = dtob(n);
+		switch(opt) {
+		case 'd':
+			n = atoi(optarg);
+			// convert dec to bin
+			char *bin = dtob(n);
 
-				printf("  DEC:  %s\n", optarg);
-				printf("  HEX:  %s\n", btoh(bin));
-				printf("  BIN:  %s\n", bin);
-				break;
-			case 'x':
-				// hex
-				printf("  HEX:  %s\n", optarg);
-				// hex to dec
-				printf("  DEC:  ...coming soon\n");
-				// hex to bin
-				printf("  BIN:  ...coming soon\n");
-				break;
-			case 'b':
-				// binary
-				printf("  BIN:  %s\n", optarg);
-				// bin to dec
-				printf("  DEC: %llu\n", btod(optarg));
-				// bin to hex
-				printf("  HEX: %s\n", btoh(optarg));
-				break;
-			case 'h':
-				// help
-				usage();
-				break;
-			default:
-				exit(EXIT_FAILURE);
+			printf("  DEC:  %s\n", optarg);
+			printf("  HEX:  %s\n", btoh(bin));
+			printf("  BIN:  %s\n", bin);
+			break;
+		case 'x':
+			// hex
+			printf("  HEX:  %s\n", optarg);
+			// hex to dec
+			printf("  DEC:  ...coming soon\n");
+			// hex to bin
+			printf("  BIN:  ...coming soon\n");
+			break;
+		case 'b':
+			// binary
+			printf("  BIN:  %s\n", optarg);
+			// bin to dec
+			printf("  DEC: %llu\n", btod(optarg));
+			// bin to hex
+			printf("  HEX: %s\n", btoh(optarg));
+			break;
+		case 'h':
+			// help
+			usage();
+			break;
+		default:
+			exit(EXIT_FAILURE);
 		}
 	}
 	return 0;
