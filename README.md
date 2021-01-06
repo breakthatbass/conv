@@ -27,3 +27,5 @@ make install
 1. add hex to decimal capability
 2. add decimal to hex capability
 3. add tests
+4. needs lots of error checking
+5. add capability for negative numbers
