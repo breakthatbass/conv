@@ -27,8 +27,6 @@ do
 		echo "  ${BLUE}->  running${NC} ${i%.c} file"
 		if ./"${i%.c}.out"; then
 			counter=$((counter + 1))
-		else
-			echo -e "🚨${RED}failed${NC} to run"
 		fi
 	else
 		echo "\n🚨 build ${RED}failed${NC}\n"
@@ -43,9 +41,9 @@ duration=$(( SECONDS - start )) #unfortunately bash can't do floats
 
 if [ $counter -eq 0 ]
 then
-	echo "$RED$counter$NC tests succeeded"
+	echo "$RED$counter$NC test files succeeded"
 else
-	echo "$GREEN$counter$NC tests succeeded"
+	echo "$GREEN$counter$NC test files succeeded"
 	echo "\nAll tests compiled, ran, and cleaned up in ${duration} seconds"
 fi
 
