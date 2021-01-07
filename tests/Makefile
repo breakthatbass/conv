@@ -1,7 +1,7 @@
 # makefile for tests
 
 CC=gcc
-CFLAGS=-Wall -Wextra -pedantic -fsanitize=address
+CFLAGS=-Wextra -pedantic -fsanitize=address
 #leave out main.c
 SRC_FILES=$(wildcard *_tests.c) ../src/conv.c ../src/helpers.c
 NAME=tests

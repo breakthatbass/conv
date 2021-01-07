@@ -18,6 +18,7 @@ void test_teardown(void)
     // nothing
 }
 
+
 MU_TEST(test_assert)
 {
     mu_assert(n1 == 65, "expected 65");
@@ -34,9 +35,8 @@ MU_TEST_SUITE(test_suite)
     MU_RUN_TEST(test_assert);
 }
 
-int main()
+int main(void)
 {
-    
     MU_RUN_SUITE(test_suite);
 	MU_REPORT();
     return MU_EXIT_CODE;
