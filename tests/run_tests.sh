@@ -3,6 +3,7 @@
 # colors for printing
 RED='\033[1;31m'
 GREEN='\033[1;32m'
+BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 # dependency files
@@ -15,19 +16,25 @@ counter=0
 
 # start timer
 start=$SECONDS
+# the emojis and colors are cool but they slow the whole process down
+# if there are multiple large files to run, they would have to be removed
 
 for i in *_tests.c
 do
+	echo "${BLUE}building${NC} ${i}"
 	if gcc "$i" $test_files -o "${i%.c}.out"; then
+		echo "\n📦 build ${GREEN}succeeded${NC}\n"
+		echo "  ${BLUE}->  running${NC} ${i%.c} file"
 		if ./"${i%.c}.out"; then
 			counter=$((counter + 1))
 		else
-			echo -e "${RED}failed${NC} to run"
+			echo -e "🚨${RED}failed${NC} to run"
 		fi
 	else
-		echo "\n${i%.c}.c ${RED}failed${NC} to build\n"
+		echo "\n🚨 build ${RED}failed${NC}\n"
 	fi
 done
+
 # clean up
 rm *.out
 
