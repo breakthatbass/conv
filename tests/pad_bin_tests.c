@@ -49,14 +49,3 @@ int main() {
 	return MU_EXIT_CODE;
 }
 
-
-
-
-/*
-// tests for pad_bin function (helper function for btoh)
-	assert(strcmp(pad_bin("101"), "0101") == 0);
-	assert(strcmp(pad_bin("1001"), "1001") == 0);
-	assert(strcmp(pad_bin("111111"), "00111111") == 0);
-	assert(strcmp(pad_bin("11111111111111"), "0011111111111111") == 0);
-	assert(strcmp(pad_bin("11111111111111111111111"), "011111111111111111111111") == 0);
-    */
