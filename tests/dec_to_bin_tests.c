@@ -35,7 +35,6 @@ MU_TEST(test_string_eq)
 	mu_assert_string_eq("11000000111001", b3);
 	mu_assert_string_eq("1011101001000011101101110011111111111", b4);
 	mu_assert_string_eq("111010011011100000010111100011110111", b5);
-
 }
 
 MU_TEST_SUITE(test_suite)
