@@ -12,7 +12,8 @@ test_files='../src/conv.c ../src/helpers.c'
 # make this script have permission to run src files
 chmod -R 777 ../src/*.c
 
-counter=0
+counter=0  # total files
+pass=0	   # files that compile and run
 
 # start timer
 start=$SECONDS
@@ -22,11 +23,12 @@ start=$SECONDS
 for i in *_tests.c
 do
 	echo "${BLUE}building${NC} ${i}"
+	counter=$((counter + 1))
 	if gcc "$i" $test_files -o "${i%.c}.out"; then
 		echo "\n📦 build ${GREEN}succeeded${NC}\n"
 		echo "  ${BLUE}->  running${NC} ${i%.c} file"
 		if ./"${i%.c}.out"; then
-			counter=$((counter + 1))
+			pass=$((pass + 1))
 		fi
 	else
 		echo "\n🚨 build ${RED}failed${NC}\n"
@@ -39,11 +41,10 @@ rm *.out
 # stop timer
 duration=$(( SECONDS - start )) #unfortunately bash can't do floats
 
-if [ $counter -eq 0 ]
+if [ $counter -eq $pass ]
 then
-	echo "$RED$counter$NC test files succeeded"
+	echo "$GREEN$pass / $counter$NC test files compiled, ran, and cleaned up in ${duration} seconds"
 else
-	echo "$GREEN$counter$NC test files succeeded"
-	echo "\nAll tests compiled, ran, and cleaned up in ${duration} seconds"
+	echo "$RED$pass / $counter$NC test files compiled, ran, and cleaned up in ${duration} seconds"
 fi
 
