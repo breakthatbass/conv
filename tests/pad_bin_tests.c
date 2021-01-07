@@ -12,7 +12,7 @@ static char b4[MAXBIN];
 static char b5[MAXBIN]; 
 
 static int m = 5;
-static char *n;
+static char n[2];
 
 void test_setup(void)
 {
@@ -22,7 +22,7 @@ void test_setup(void)
     strcpy(b4, pad_bin("11111111111111"));
     strcpy(b5, pad_bin("11111111111111111111111"));
 
-    n = itoa(m);
+    itoa(m, n);
 }
 
 void test_teardown(void)
