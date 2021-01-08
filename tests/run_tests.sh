@@ -47,4 +47,3 @@ then
 else
 	echo "$RED$pass / $counter$NC test files compiled, ran, and cleaned up in ${duration} seconds"
 fi
-
