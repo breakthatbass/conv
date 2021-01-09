@@ -51,7 +51,11 @@ char *btoh(char *bin) {
 	int hexlen = len/4; // need one hex for every 4 bins
 	hexlen++;
 
-	hex = (char*)malloc(sizeof(char)*hexlen);
+	hex = malloc(sizeof(char)*hexlen);
+	if (hex == NULL) {
+		fprintf(stderr, "btoh: couldn't allocate memory\n");
+		exit(EXIT_FAILURE);
+	}
 
 	char buf[5];
 	for (i = 0; i < len; i+=4) {

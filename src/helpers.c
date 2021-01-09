@@ -65,7 +65,7 @@ char *pad_bin(char *bin)
 	rbin = malloc(sizeof(char)*plen);
 	if (rbin == NULL) {
 		fprintf(stderr, "pad_hex: memory problems\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	for (i = 0; i < p; ++i)
