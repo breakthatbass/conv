@@ -75,3 +75,63 @@ char *btoh(char *bin) {
 	hex -= hexlen-1;
 	return hex;
 }
+
+#include <ctype.h>
+
+#define HEXLEN 6
+
+struct x {
+	char c;
+	int val;
+};
+
+struct x hex_c[HEXLEN];  // key value pairs for each hex char
+
+
+// get a decimal value from a single hex char
+int get_value(char c)
+{
+	int i, n;
+	char ch;
+
+	for (i = 0, ch = 'A', n = 10; i < HEXLEN; ch++, i++, n++) {
+		hex_c[i].c = ch;
+		hex_c[i].val = n;
+	}
+
+	if (isdigit(c)) return atoi(&c);
+	else if (c >= 'A' || c <= 'F') {
+		// get val from struct
+		for (i = 0; i < HEXLEN; i++) {
+			if (c == hex_c[i].c) {
+				return hex_c[i].val;
+			}
+		}
+	} 
+	return -1;
+}
+
+
+
+// hex to dec
+uint64_t htod(char *hex)
+{	
+	int i, n;
+	uint64_t dec = 0;
+	uint64_t base = 1;
+
+	size_t len = strlen(hex)-1;
+
+	hex += len;
+	for (i = len; i>=0; --i, --hex) {
+		n = get_value(*hex);
+		if (n < 0) {
+			fprintf(stderr, "not a valid HEX\n");
+			exit(EXIT_FAILURE);
+		}
+		dec += base * n;
+		base *= 16;
+	}
+	return dec;
+}
+

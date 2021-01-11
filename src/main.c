@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 			// hex
 			printf("  HEX:  %s\n", optarg);
 			// hex to dec
-			printf("  DEC:  ...coming soon\n");
+			printf("  DEC:  %llu\n", htod(optarg));
 			// hex to bin
 			printf("  BIN:  ...coming soon\n");
 			break;

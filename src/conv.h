@@ -12,4 +12,7 @@ char *dtob(uint64_t n);
 // binary to hex conveter
 char *btoh(char *bin);
 
+// hex to dec converter
+uint64_t htod(char *hex);
+
 #endif
