@@ -19,6 +19,7 @@ static void usage()
 int main(int argc, char **argv)
 {
 	int opt, n;
+	uint64_t d;
 
 	if (argc < 2 || argc > 3) {
 		usage();
@@ -38,11 +39,12 @@ int main(int argc, char **argv)
 			break;
 		case 'x':
 			// hex
+			d = htod(optarg);
 			printf("  HEX:  %s\n", optarg);
 			// hex to dec
-			printf("  DEC:  %llu\n", htod(optarg));
+			printf("  DEC:  %llu\n", d);
 			// hex to bin
-			printf("  BIN:  ...coming soon\n");
+			//printf("  BIN:  %s\n", dtob(p));
 			break;
 		case 'b':
 			// binary

@@ -93,13 +93,17 @@ int get_value(char c)
 {
 	int i, n;
 	char ch;
+	int p;
 
 	for (i = 0, ch = 'A', n = 10; i < HEXLEN; ch++, i++, n++) {
 		hex_c[i].c = ch;
 		hex_c[i].val = n;
 	}
 
-	if (isdigit(c)) return atoi(&c);
+	if (isnumber(c)) {
+		sscanf(&c, "%d", &p);
+		return p;
+	}
 	else if (c >= 'A' || c <= 'F') {
 		// get val from struct
 		for (i = 0; i < HEXLEN; i++) {
@@ -114,11 +118,11 @@ int get_value(char c)
 
 
 // hex to dec
-uint64_t htod(char *hex)
+long htod(char *hex)
 {	
 	int i, n;
-	uint64_t dec = 0;
-	uint64_t base = 1;
+	long dec = 0;
+	long base = 1;
 
 	size_t len = strlen(hex)-1;
 

@@ -13,6 +13,6 @@ char *dtob(uint64_t n);
 char *btoh(char *bin);
 
 // hex to dec converter
-uint64_t htod(char *hex);
+long htod(char *hex);
 
 #endif
